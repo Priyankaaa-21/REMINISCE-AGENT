@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: reminisce-ai
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_NAME
+        value: reminisce_ai
+      - key: SESSION_SECRET
+        sync: false
+      - key: AZURE_COMPUTER_VISION_ENDPOINT
+        sync: false
+      - key: AZURE_COMPUTER_VISION_KEY
+        sync: false
+      - key: AZURE_SPEECH_ENDPOINT
+        sync: false
+      - key: AZURE_SPEECH_KEY
+        sync: false
+      - key: AZURE_SPEECH_REGION
+        value: southeastasia
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: NODE_ENV
+        value: production

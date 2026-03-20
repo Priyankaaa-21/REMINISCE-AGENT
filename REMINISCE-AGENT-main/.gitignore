@@ -1,0 +1,38 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+server/public
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Audio files (generated at runtime)
+public/audio/*.mp3
+
+# Temporary files
+*.tar.gz
+tmp/
+temp/
+
+# Replit files
+.replit
+replit.nix
+
+# Vite config backups
+vite.config.ts.*

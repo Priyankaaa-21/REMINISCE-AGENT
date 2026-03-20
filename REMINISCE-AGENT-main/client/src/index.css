@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Custom theme colors from HTML templates */
+    --brand-primary: 15 40 84;
+    --brand-secondary: 28 77 141;
+    --brand-accent: 73 136 196;
+    --brand-background: 189 232 245;
+    --brand-light: 232 244 248;
+  }
+}
+
+@layer base {
+  :root {
+    /* Primary Healthcare Theme - Extracted from absolute design source of truth */
+    --background: 194 75% 95%; /* #F8FBFD / #E8F4F8 */
+    --foreground: 218 70% 19%; /* #0F2854 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 218 70% 19%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 70% 19%;
+
+    --primary: 214 67% 33%; /* #1C4D8D */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 194 75% 85%; /* #BDE8F5 */
+    --secondary-foreground: 214 67% 33%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 209 53% 53%; /* #4988C4 */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 6 78% 57%; /* #E74C3C */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 214 67% 33%;
+
+    --radius: 1.5rem; /* Modern rounded corners from designs */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background: linear-gradient(135deg, #F8FBFD 0%, #E8F4F8 100%);
+    min-height: 100vh;
+  }
+
+  /* Smooth scrolling for all elements */
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Better touch targets for mobile */
+@media (max-width: 768px) {
+  button, a, input, select, textarea {
+    min-height: 44px;
+  }
+}
+
+/* Inherited Button Styles from Design */
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-[#4988C4] to-[#1C4D8D] text-white font-bold py-4 px-6 rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl active:translate-y-0;
+  }
+  
+  .btn-secondary {
+    @apply bg-white/70 backdrop-blur-md border border-[#4988C4]/20 text-[#1C4D8D] font-bold py-4 px-6 rounded-2xl shadow-md transition-all duration-300 hover:bg-white/90;
+  }
+
+  .card-glass {
+    @apply bg-white/75 backdrop-blur-[30px] border border-white/50 rounded-2xl md:rounded-[32px] shadow-xl transition-all duration-300 hover:shadow-2xl;
+  }
+}
+
+/* High Contrast Patient Accessibility */
+.patient-view {
+  font-size: clamp(16px, 3vw, 24pt);
+}
+
+.patient-button-sos {
+  @apply bg-[#E74C3C] text-white text-2xl md:text-4xl font-black py-8 md:py-12 px-6 md:px-8 rounded-2xl md:rounded-3xl shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 border-4 border-white;
+}
+
+.patient-button-voice {
+  @apply bg-[#4988C4] text-white text-xl md:text-3xl font-bold py-8 md:py-10 px-6 md:px-8 rounded-2xl md:rounded-3xl shadow-xl transition-all duration-300 hover:scale-105 active:scale-95;
+}
+
+.patient-high-contrast {
+  @apply bg-[#0F2854] text-[#BDE8F5] font-black;
+}
+
+/* Smooth animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .patient-view {
+    font-size: 16px;
+  }
+  
+  /* Ensure buttons are easily tappable on mobile */
+  button {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Ensure modal scrolls properly on mobile */
+.modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
